@@ -1,0 +1,21 @@
+{% extends 'plants/base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+<form action="." method='post'>
+  {% csrf_token %}
+  <h3>Did you water the plant:</h3>
+    {% for plant in plants %}
+      <ul class="list-group">
+        <li class="list-group-item">{{ plant.name }}</li>
+      </ul>
+    {% endfor %}
+  <br>
+  {% buttons %}
+    <input class="btn btn-success" type="submit" value="Yes">
+    <a href="{% url 'plants:check' %}"><button type="button" class="btn btn-danger">No</button></a>
+  {% endbuttons %}
+</form>
+
+{% endblock content %}

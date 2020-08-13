@@ -1,0 +1,4 @@
+g_env/
+.idea/
+db.sqlite3
+__pycache__/

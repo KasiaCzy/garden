@@ -1,0 +1,19 @@
+{% extends 'plants/base.html' %}
+
+{% block page_header %}
+  <div class='jumbotron'>
+    <h1 class="display-3">Your HomeGarden</h1>
+      {% if user.is_authenticated %}  
+        <p class="lead">It's time to care for your houseplants!</p>
+        <a class="btn btn-lg btn-primary" href="{% url 'plants:list' %}" role="button">List of plants &raquo</a>
+        <p class="lead">Watering your plants is key to keeping them healthy. But remeber one rule: Water the plants only as often as needed.
+                        Before you water you should check how dry the soil is.</p>
+        <a class="btn btn-lg btn-primary" href="{% url 'plants:check' %}" role="button">List for today &raquo</a>
+      {% else %}
+        <p class="lead">Register Your Account. Already Registered? Please log in.</p>
+        <a class="btn btn-lg btn-primary" href="{% url 'users:register' %}" role="button">Register &raquo;</a>
+        <a class="btn btn-lg btn-secondary" href="{% url 'users:login' %}" role="button">LogIn &raquo;</a>
+      {% endif %}
+
+  </div>
+{% endblock page_header %}
