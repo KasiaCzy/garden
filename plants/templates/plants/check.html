@@ -1,32 +1,15 @@
-{% extends 'plants/base.html' %}
+{% extends 'base.html' %}
 
 {% block page_header %}
-<h1>Today you should see if the soil is wet:</h1>
+    <h1>Today you should see if the soil is wet:</h1>
 {% endblock page_header %}
 
 {% block content %}
-  {% for check in checks %}
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">{{ check }}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">
-          {% if check.watering_date %}
-            Date of last watering: {{ check.watering_date | date:"j M Y" }}
-          {% else %}
-            Date of last watering: -
-          {% endif %}
-        </h6>
-        <p class="card-text">{{ plant.text |truncatechars:20 }}</p>
-        <a href="{% url 'plants:today_watering' check.id %}" class="card-link">Watering now</a>
-        <a href="{% url 'plants:plant' check.id %}" class="card-link">More details</a>
-      </div>
-    </div>
-  {% empty %}
-    <li>No plants</li> 
-  {% endfor %} 
-<br>
+
 {% if checks %}
     <a href="{% url 'plants:watering_all' %}"><button type="button" class="btn btn-primary btn-sm">Watering all</button></a><br>
 {% endif %}
+<br>
+{% include "./cards.html" with plants=checks url_watering='plants:today_watering' %}
 
 {% endblock content %}

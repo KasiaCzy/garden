@@ -1,13 +1,14 @@
-{% extends 'plants/base.html' %}
+{% extends 'base.html' %}
 {% load bootstrap4 %}
 
 {% block page_header %}
   <h2>{{ plant }}</h2>
+  <img src="{{ plant.image.url }}" class="rounded mx-auto d-block">
 {% endblock page_header %}
 
 {% block content %}
 
-  <div class="accordion" id="accordionExample">
+  <div id="accordionExample">
   <div class="card">
     <div class="card-header" id="headingOne">
       <h2 class="mb-0">
@@ -16,7 +17,7 @@
         </button>
       </h2>
     </div>
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne">
       <div class="card-body">
         {{ plant.text | linebreaks }}
       </div>
@@ -30,12 +31,12 @@
         </button>
       </h2>
     </div>
-    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo">
       <div class="card-body"> 
         {% if plant.watering_frequency == "REG" %}
-          regularly
+          Regularly
         {% else %}
-          infrequently
+          Infrequently
         {% endif %}
       </div>
     </div>
@@ -48,7 +49,7 @@
         </button>
       </h2>
     </div>
-    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+    <div id="collapseThree" class="collapse show" aria-labelledby="headingThree">
       <div class="card-body">
         {% if plant.watering_date %}
           Date of last watering: {{ plant.watering_date | date:"j M Y" }}

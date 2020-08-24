@@ -1,0 +1,22 @@
+<div class="card-columns">
+  {% for plant in plants %}
+    <div class="card">
+    <img src="{{ plant.image.url }}" class="rounded mx-auto d-block">
+      <div class="card-body">
+        <h5 class="card-title">{{ plant.name }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+          {% if plant.watering_date %}
+            Date of last watering: {{ plant.watering_date | date:"j M Y" }}
+          {% else %}
+            Date of last watering: -
+          {% endif %}
+        </h6>
+        <p class="card-text">{{ plant.text |truncatechars:20 }}</p>
+        <a href="{% url url_watering plant.id %}" class="btn btn-primary btn-sm">Watering now</a>
+        <a href="{% url 'plants:plant' plant.id %}" class="card-link">More details</a>
+      </div>
+    </div>
+  {% empty %}
+    <h3>No plants</h3>
+  {% endfor %}
+</div>

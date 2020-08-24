@@ -1,4 +1,4 @@
-{% extends 'plants/base.html' %}
+{% extends 'base.html' %}
 {% load bootstrap4 %}
 
 {% block page_header %}
@@ -6,13 +6,20 @@
 {% endblock page_header %}
 
 {% block content %}
-
-  <form action="{% url 'plants:new_plant' %}"method='post' class="form">
-  {% csrf_token %}
-  {% bootstrap_form form %}
-  {% buttons %}
-  <button name="submit" class="btn btn-primary">Add plant</button>
-  {% endbuttons %}
+  {% if e %}
+    <div class="alert alert-danger">
+      {{ e }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  {% endif %}
+  <form action="{% url 'plants:new_plant' %}" method='post' class="form" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+      <button name="submit" class="btn btn-primary">Add plant</button>
+    {% endbuttons %}
   </form>
 
 {% endblock content %}

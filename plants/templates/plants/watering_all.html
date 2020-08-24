@@ -1,11 +1,14 @@
-{% extends 'plants/base.html' %}
+{% extends 'base.html' %}
 {% load bootstrap4 %}
+
+{% block page_header %}
+    <h3>Did you water the plant:</h3>
+{% endblock page_header %}
 
 {% block content %}
 
 <form action="." method='post'>
   {% csrf_token %}
-  <h3>Did you water the plant:</h3>
     {% for plant in plants %}
       <ul class="list-group">
         <li class="list-group-item">{{ plant.name }}</li>

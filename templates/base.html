@@ -1,10 +1,12 @@
 {% load bootstrap4 %}
+{% load static %}
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="eng">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel='icon' href="{% static 'images/icon.png' %}">
     <title>HomeGarden</title>
 
     {% bootstrap_css %}
@@ -15,27 +17,30 @@
   <body>
     
     <nav class="navbar navbar-expand-md navbar-light bg-light mb-4 border">
+      <img src="{% static 'images/icon.png' %}" width="25" height="30">
       <a class="navbar-brand" href="{% url 'plants:index' %}">HomeGarden</a>
+      <a class="nav-link" href="{% url 'plants:list' %}">List of plants</a>
+      <a class="nav-link" href="{% url 'plants:check' %}">List for today</a>
       
       <button class="navbar-toggler" type="button" data-toggle="collapse"
         data-target="#navbarCollapse" aria-controls="navbarCollapse"
         aria-expanded="false" aria-label="Toggle navigation">
-      <span=class"navbar-toggler-icon"></span></button>
+      <span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav ml-auto">
         {% if user.is_authenticated %}
-          <li classs="nav-item">
+          <li class="nav-item">
             <span class="navbar-text">Hello, {{ user.username }}</span>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'users:logout' %}">LogOut</a>
+            <a class="nav-link" href="{% url 'users:logout' %}">Log out</a>
           </li>
         {% else %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'users:register' %}">Register</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'users:login' %}">LogIn</a>
+            <a class="nav-link" href="{% url 'users:login' %}">Log in</a>
           </li>
         {% endif %}
       </ul>

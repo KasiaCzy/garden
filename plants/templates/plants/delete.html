@@ -1,11 +1,11 @@
-{% extends 'plants/base.html' %}
+{% extends 'base.html' %}
 {% load bootstrap4 %}
 
 {% block content %}
 
 <form action="." method='post'>
   {% csrf_token %}
-  <h3>Do you want to delete the plant: "{{ plant.name }}"?</h3><br>
+    <h3 class="mb-4">Do you want to delete the plant: "{{ plant.name }}"?</h3>
   {% buttons %}
     <input class="btn btn-success" type="submit" value="Yes" />
     <a href="{% url 'plants:list' %}"><button type="button" class="btn btn-danger">Cancel</button></a>

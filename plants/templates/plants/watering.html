@@ -1,14 +1,17 @@
-{% extends 'plants/base.html' %}
+{% extends 'base.html' %}
 {% load bootstrap4 %}
+
+{% block page_header %}
+    <h3>Did you water the plant: "{{ plant.name }}"?</h3>
+{% endblock page_header %}
 
 {% block content %}
 
 <form action="." method='post'>
   {% csrf_token %}
-  <h3>Did you water the plant: "{{ plant.name }}"?</h3><br>
   {% buttons %}
     <input class="btn btn-success" type="submit" value="Yes">
-    <a href="{% url 'plants:list' %}"><button type="button" class="btn btn-danger">No</button></a>
+    <a href="{% url url_name %}"><button type="button" class="btn btn-danger">No</button></a>
   {% endbuttons %}
 </form>
 

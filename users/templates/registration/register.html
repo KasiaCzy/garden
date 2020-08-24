@@ -1,4 +1,4 @@
-{% extends 'plants/base.html' %}
+{% extends 'base.html' %}
 {% load bootstrap4 %}
 
 {% block page_header %}
@@ -13,7 +13,6 @@
     {% buttons %}
       <button name="submit" class="btn btn-primary">Register</button>
     {% endbuttons %}
-    <input type="hidden" name="next" value="{% url 'plants:index' %}"/>
   </form>
 
 {% endblock content %}
